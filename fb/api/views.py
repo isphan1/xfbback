@@ -30,7 +30,7 @@ class PostView(ListAPIView, RetrieveModelMixin):
         def postAndComment(x):
 
             c = Comment.objects.select_related("user").select_related("post").filter(
-                post__id=x['id']).values("text", "id", 'user__first_name')
+                post__id=x['id']).values("text", 'user__first_name')
 
             def subCommentAppend(id):
 
