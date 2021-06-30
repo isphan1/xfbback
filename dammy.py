@@ -29,7 +29,7 @@ def post(n):
     user = User.objects.select_related('profile').values('username')
 
     for _ in range(n):
-        text = fake.sentence(5)
+        text = fake.paragraph(nb_sentences=5)
         u = User.objects.get(username = user[random.randint(0,20)]['username'])
         Post.objects.create(
             user = u,
