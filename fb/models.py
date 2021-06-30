@@ -26,7 +26,7 @@ class Profile(models.Model):
 class Post(models.Model):
     
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name="posts")
-    text = models.CharField(max_length=255,null=False,blank=False)
+    text = models.TextField(blank=False)
     created_at = models.DateTimeField(auto_now_add=True,null=False)
     updated_at = models.DateTimeField(auto_now=True,null=False)
     id = models.UUIDField(default=uuid.uuid4,  unique=True,
