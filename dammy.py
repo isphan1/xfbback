@@ -41,10 +41,11 @@ def comment(n):
         user = User.objects.select_related('profile').values('username')
         post = Post.objects.select_related('profile').select_related('comment').values('id')
 
-        u = User.objects.get(username = user[random.randint(0,20)]['username'])
-        p = Post.objects.get(id = post[random.randint(0,20)]['id'])
         for _ in range(n):
-    
+
+            u = User.objects.get(username = user[random.randint(0,20)]['username'])
+            p = Post.objects.get(id = post[random.randint(0,499)]['id'])
+        
             text = fake.sentence()
             Comment.objects.create(
                 user=u,
@@ -57,7 +58,7 @@ def subComment(n):
     comment = Comment.objects.select_related('profile').select_related('post').values('id')
     
     for _ in range(n):
-        c = Comment.objects.get(text = comment[random.randint(0,500)]['id'])
+        c = Comment.objects.get(id = comment[random.randint(0,1999)]['id'])
         u = User.objects.get(username = user[random.randint(0,20)]['username'])
         text = fake.sentence()
         SubComment.objects.create(

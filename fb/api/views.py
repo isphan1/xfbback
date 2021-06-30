@@ -15,12 +15,12 @@ class PostView(ListAPIView, RetrieveModelMixin):
 
     serializer_class = PostSerializer
     queryset = Post.objects.all()
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticated]
 
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
 
         u = User.objects.select_related(
-            "profile").get(username="root")
+            "profile").get(username=request.data['username'])
 
         post = []
 
