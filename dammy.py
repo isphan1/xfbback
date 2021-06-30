@@ -27,7 +27,8 @@ def user(n):
 def post(n):
     fake = Faker()
     user = User.objects.select_related('profile').values('username')
-    for _ in n:
+
+    for _ in range(n):
         text = fake.sentence(5)
         u = User.objects.get(username = user[random.randint(0,20)]['username'])
         Post.objects.create(
@@ -42,7 +43,7 @@ def comment(n):
 
         u = User.objects.get(username = user[random.randint(0,20)]['username'])
         p = Post.objects.get(id = post[random.randint(0,20)]['id'])
-        for _ in n:
+        for _ in range(n):
     
             text = fake.sentence()
             Comment.objects.create(
@@ -55,7 +56,7 @@ def subComment(n):
     user = User.objects.select_related('profile').values('username')
     comment = Comment.objects.select_related('profile').select_related('post').values('id')
     
-    for _ in n:
+    for _ in range(n):
         c = Comment.objects.get(text = comment[random.randint(0,500)]['id'])
         u = User.objects.get(username = user[random.randint(0,20)]['username'])
         text = fake.sentence()
@@ -69,7 +70,7 @@ def message(n):
 
     fake = Faker()
     user = User.objects.select_related('profile').values('username')
-    for _ in n:
+    for _ in range(n):
         u1 = User.objects.get(username = user[random.randint(0,20)]['username'])
         u2 = User.objects.get(username = user[random.randint(0,20)]['username'])
         text = fake.sentence()
