@@ -21,8 +21,8 @@ class Profile(models.Model):
     cover_photo = models.ImageField(upload_to=cover_photo_upload)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
     updated_at = models.DateTimeField(auto_now=True, null=False)
-    # id = models.UUIDField(default=uuid.uuid4,  unique=True,
-    #                       primary_key=True, editable=False)
+    id = models.UUIDField(default=uuid.uuid4,  unique=True,
+                          primary_key=True, editable=False)
 
     def __str__(self):
         return self.user.username
@@ -35,8 +35,8 @@ class Post(models.Model):
     text = models.CharField(max_length=255, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
     updated_at = models.DateTimeField(auto_now=True, null=False)
-    # id = models.UUIDField(default=uuid.uuid4,  unique=True,
-    #                       primary_key=True, editable=False)
+    id = models.UUIDField(default=uuid.uuid4,  unique=True,
+                          primary_key=True, editable=False)
 
     def __str__(self) -> str:
         return self.text
@@ -51,8 +51,8 @@ class Comment(models.Model):
         Post, on_delete=models.CASCADE, related_name="comments")
     created_at = models.DateTimeField(auto_now_add=True, null=False)
     updated_at = models.DateTimeField(auto_now=True, null=False)
-    # id = models.UUIDField(default=uuid.uuid4,  unique=True,
-    #                       primary_key=True, editable=False)
+    id = models.UUIDField(default=uuid.uuid4,  unique=True,
+                          primary_key=True, editable=False)
 
     def __str__(self) -> str:
         return self.text
@@ -67,8 +67,8 @@ class SubComment(models.Model):
         Comment, on_delete=models.CASCADE, related_name="subComments")
     created_at = models.DateTimeField(auto_now_add=True, null=False)
     updated_at = models.DateTimeField(auto_now=True, null=False)
-    # id = models.UUIDField(default=uuid.uuid4,  unique=True,
-    #                       primary_key=True, editable=False)
+    id = models.UUIDField(default=uuid.uuid4,  unique=True,
+                          primary_key=True, editable=False)
 
     def __str__(self) -> str:
         return self.text
@@ -83,8 +83,8 @@ class Message(models.Model):
     text = models.CharField(max_length=255, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
     updated_at = models.DateTimeField(auto_now=True, null=False)
-    # id = models.UUIDField(default=uuid.uuid4,  unique=True,
-    #                       primary_key=True, editable=False)
+    id = models.UUIDField(default=uuid.uuid4,  unique=True,
+                          primary_key=True, editable=False)
 
     @property
     def sender_info(self):
